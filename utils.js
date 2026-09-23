@@ -34,19 +34,3 @@ function updateCartCount() {
 }
 
 document.addEventListener("DOMContentLoaded", updateCartCount);
-
-// Shared product card (used by the home page and the shop page)
-function productCardHTML(p) {
-  return '' +
-    '<div class="image">' +
-    '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">' +
-    '<h2>' + p.name + '</h2>' +
-    '<h3>price <del>' + formatPrice(p.price) + '</del></h3>' +
-    '<h1 class="salse">' + formatPrice(p.salePrice) + '</h1>' +
-    '<mark>discount ' + p.discount + '%</mark>' +
-    '<div class="card-actions">' +
-    '<button type="button" class="sub cart" data-id="' + p.id + '">Add to cart</button>' +
-    '<button type="button" class="buy" data-id="' + p.id + '">Buy</button>' +
-    '</div>' +
-    '</div>';
-}
