@@ -413,12 +413,12 @@ button:hover {
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 35%, #171340 0%, transparent 60%),
+      background:
+    linear-gradient(90deg, rgba(10,8,32,0) 40%, rgba(10,8,32,.85) 100%),
+    url('peacock.png') center / cover no-repeat,
     var(--navy-deep);
-  padding: 2rem 1.5rem;
 }
-.hero-content { position: relative; z-index: 2; max-width: 760px; }
-.hero h1 {
+.hero-content { position: relative; z-index: 2; max-width: 460px; margin-left: auto; margin-right: 5vw; }.hero h1 {
   font-size: clamp(2.4rem, 6vw, 4.6rem);
   line-height: 1.1;
   color: var(--cream);
