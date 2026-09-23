@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRVA Jewelry — Order Confirmed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <style>
+        .confirm-wrap {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            text-align: center;
+        }
+        .confirm-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.2rem;
+            color: #c8a86c;
+        }
+        .order-id {
+            font-size: 1.1rem;
+            letter-spacing: 0.04em;
+            color: #3a3a3a;
+            margin: 0.5rem 0 2rem;
+        }
+        .order-card {
+            text-align: left;
+            background: #fff;
+            border: 1px solid #e8e2d6;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .order-card h3 {
+            margin-top: 0;
+        }
+        .order-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.92rem;
+            border-bottom: 1px solid #f0ece3;
+        }
+        .order-line .meta {
+            color: #8a8a8a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contariar">
+
+        <header class="navbar">
+            <a href="index.html" class="logo" aria-label="AMIRVA home">
+                <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+                    <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none">
+                        <line x1="50" y1="62" x2="12" y2="52"/>
+                        <line x1="50" y1="62" x2="15" y2="38"/>
+                        <line x1="50" y1="62" x2="22" y2="26"/>
+                        <line x1="50" y1="62" x2="31" y2="17"/>
+                        <line x1="50" y1="62" x2="40" y2="12"/>
+                        <line x1="50" y1="62" x2="50" y2="10"/>
+                        <line x1="50" y1="62" x2="60" y2="12"/>
+                        <line x1="50" y1="62" x2="69" y2="17"/>
+                        <line x1="50" y1="62" x2="78" y2="26"/>
+                        <line x1="50" y1="62" x2="85" y2="38"/>
+                        <line x1="50" y1="62" x2="88" y2="52"/>
+                        <path d="M12 52 Q14 22 50 10 Q86 22 88 52"/>
+                    </g>
+                    <path d="M50 64 C40 72 42 84 50 92 C58 84 60 72 50 64 Z" fill="currentColor"/>
+                    <path d="M28 66 Q38 64 48 72 M72 66 Q62 64 52 72" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">AMIRVA</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="web.html">Shop</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 H19 L18 20.5 H6 Z"/><path d="M9 8.5 V7 A3 3 0 0 1 15 7 V8.5"/></svg>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="confirm-wrap">
+            <svg class="confirm-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7.5 12.5 L10.5 15.5 L16.5 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <h1 class="section-title" style="margin-bottom:0.3rem;">Thank you for your order!</h1>
+            <p id="order-id" class="order-id"></p>
+
+            <div class="order-card" id="order-card">
+                <p class="section-hint">Loading your order…</p>
+            </div>
+
+            <a href="web.html" class="cta-btn">Continue Shopping</a>
+        </div>
+
+        <footer class="site-footer" id="contact">
+            <div class="foot-bottom">
+                <div class="copy">© 2026 AMIRVA Jewelry. All rights reserved.</div>
+                <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
+    <script src="nav.js"></script>
+
+    <script>
+        (function () {
+            let order = null;
+            try {
+                order = JSON.parse(localStorage.getItem("amirva_last_order"));
+            } catch (e) { /* ignore */ }
+
+            const idEl = document.getElementById("order-id");
+            const cardEl = document.getElementById("order-card");
+
+            if (!order) {
+                idEl.textContent = "";
+                cardEl.innerHTML = "<p>We couldn't find a recent order. If you just checked out, please contact support.</p>";
+                return;
+            }
+
+            idEl.textContent = "Order " + order.id;
+
+            let itemsHTML = "<h3>Order details</h3>";
+            (order.items || []).forEach(function (item) {
+                const lineTotal = item.unitPrice * item.quantity;
+                itemsHTML += "<div class='order-line'>" +
+                    "<span>" + item.name +
+                    (item.size ? " <span class='meta'>(" + item.size + ")</span>" : "") +
+                    " <span class='meta'>×" + item.quantity + "</span>" +
+                    (item.gift ? " <span class='meta'>🎁</span>" : "") +
+                    "</span>" +
+                    "<span>" + lineTotal + " EGY</span>" +
+                    "</div>";
+            });
+
+            itemsHTML += "<div class='order-line'><span>Subtotal</span><span>" + order.subtotal + " EGY</span></div>";
+
+            if (order.discountPercent > 0) {
+                itemsHTML += "<div class='order-line'><span>Discount</span><span>-" +
+                    (order.subtotal - order.total).toFixed(2) + " EGY (" + order.discountPercent + "%)</span></div>";
+            }
+
+            itemsHTML += "<div class='order-line' style='border-bottom:none; font-weight:600;'>" +
+                "<span>Total</span><span>" + order.total.toFixed(2) + " EGY</span></div>" +
+                "<hr style='border:none; border-top:1px solid #e8e2d6; margin:1rem 0;'>" +
+                "<h3>Shipping to</h3>" +
+                "<p style='margin:0; color:#5a5a5a; font-size:0.9rem;'>" +
+                order.name + "<br>" + order.address + ", " + order.city + " " + order.postalCode +
+                "</p>" +
+                "<p style='margin-top:0.8rem; color:#8a8a8a; font-size:0.85rem;'>" +
+                (order.paymentMethod === "cod"
+                    ? "Payment: Cash on delivery"
+                    : "Payment: Card ending in " + order.cardLast4) +
+                "</p>";
+
+            cardEl.innerHTML = itemsHTML;
+        })();
+    </script>
+
+</body>
+
+</html>

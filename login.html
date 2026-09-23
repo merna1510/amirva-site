@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRVA Jewelry — Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+    <div class="contariar">
+
+        <header class="navbar">
+            <a href="index.html" class="logo" aria-label="AMIRVA home">
+                <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+                    <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none">
+                        <line x1="50" y1="62" x2="12" y2="52"/>
+                        <line x1="50" y1="62" x2="15" y2="38"/>
+                        <line x1="50" y1="62" x2="22" y2="26"/>
+                        <line x1="50" y1="62" x2="31" y2="17"/>
+                        <line x1="50" y1="62" x2="40" y2="12"/>
+                        <line x1="50" y1="62" x2="50" y2="10"/>
+                        <line x1="50" y1="62" x2="60" y2="12"/>
+                        <line x1="50" y1="62" x2="69" y2="17"/>
+                        <line x1="50" y1="62" x2="78" y2="26"/>
+                        <line x1="50" y1="62" x2="85" y2="38"/>
+                        <line x1="50" y1="62" x2="88" y2="52"/>
+                        <path d="M12 52 Q14 22 50 10 Q86 22 88 52"/>
+                    </g>
+                    <path d="M50 64 C40 72 42 84 50 92 C58 84 60 72 50 64 Z" fill="currentColor"/>
+                    <path d="M28 66 Q38 64 48 72 M72 66 Q62 64 52 72" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">AMIRVA</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="has-drop">
+                        <a href="web.html">Shop
+                            <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 L6 7.5 L9 4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                        </a>
+                        <ul class="drop">
+                            <li><a href="web.html?category=rings">Rings</a></li>
+                            <li><a href="web.html?category=necklaces">Necklaces</a></li>
+                            <li><a href="web.html?category=earrings">Earrings</a></li>
+                            <li><a href="web.html?category=bracelets">Bracelets</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="web.html">Jewellery</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="#" class="icon-btn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5 C5.5 15.5 18.5 15.5 19.5 20.5"/></svg>
+                </a>
+                <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 H19 L18 20.5 H6 Z"/><path d="M9 8.5 V7 A3 3 0 0 1 15 7 V8.5"/></svg>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+            </div>
+        </header>
+
+        <section class="shop-head">
+            <div class="eyebrow">Welcome Back</div>
+            <h1 class="section-title">Sign In</h1>
+        </section>
+
+        <section class="auth-wrap">
+            <form class="auth-card" id="login-form" novalidate>
+
+                <div class="field">
+                    <label for="login-email">Email address</label>
+                    <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email">
+                    <p class="field-error" id="login-email-error"></p>
+                </div>
+
+                <div class="field">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password">
+                    <p class="field-error" id="login-password-error"></p>
+                </div>
+
+                <p class="form-message" id="login-message"></p>
+
+                <button type="submit" class="cta-btn auth-submit">Login</button>
+
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Create one</a></p>
+            </form>
+        </section>
+
+        <footer class="site-footer" id="contact">
+            <div class="foot-grid">
+                <div>
+                    <div class="eyebrow" style="margin-bottom:.8rem;">AMIRVA</div>
+                    <p>Fine jewelry crafted for those who seek the extraordinary.</p>
+                </div>
+                <div class="foot-col">
+                    <div class="foot-col-title">Collections</div>
+                    <ul>
+                        <li><a href="web.html?category=rings">Rings</a></li>
+                        <li><a href="web.html?category=necklaces">Necklaces</a></li>
+                        <li><a href="web.html?category=earrings">Earrings</a></li>
+                        <li><a href="web.html?category=bracelets">Bracelets</a></li>
+                    </ul>
+                </div>
+                <div class="foot-col">
+                    <div class="foot-col-title">Shop</div>
+                    <ul>
+                        <li><a href="web.html">All Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="foot-col">
+                    <div class="foot-col-title">Client Services</div>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping &amp; Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <div class="copy">© 2026 AMIRVA Jewelry. All rights reserved.</div>
+                <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
+    <script src="nav.js"></script>
+    <script src="auth.js"></script>
+
+    <script>
+        const form = document.getElementById("login-form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const emailInput = document.getElementById("login-email");
+            const passwordInput = document.getElementById("login-password");
+            const emailError = document.getElementById("login-email-error");
+            const passwordError = document.getElementById("login-password-error");
+            const message = document.getElementById("login-message");
+            message.textContent = "";
+            message.className = "form-message";
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            let ok = true;
+
+            if (!email) {
+                ok = setFieldError(emailInput, emailError, "Please enter your email.") && ok;
+            } else if (!isValidEmail(email)) {
+                ok = setFieldError(emailInput, emailError, "Please enter a valid email address.") && ok;
+            } else {
+                setFieldError(emailInput, emailError, "");
+            }
+
+            if (!password) {
+                ok = setFieldError(passwordInput, passwordError, "Please enter your password.") && ok;
+            } else {
+                setFieldError(passwordInput, passwordError, "");
+            }
+
+            if (!ok) return;
+
+            const user = findUserByEmail(email);
+
+            if (!user || user.password !== password) {
+                message.textContent = "Incorrect email or password.";
+                message.classList.add("error");
+                return;
+            }
+
+            setCurrentUser(user);
+            message.textContent = "Welcome back, " + user.name + "! Redirecting…";
+            message.classList.add("success");
+
+            setTimeout(function () {
+                const redirectTo = sessionStorage.getItem("amirva_redirect_after_login");
+                sessionStorage.removeItem("amirva_redirect_after_login");
+                window.location.href = redirectTo || "index.html";
+            }, 900);
+        });
+    </script>
+
+</body>
+
+</html>

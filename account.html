@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRVA Jewelry — My Account</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <style>
+        .account-wrap {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+        }
+        .account-card {
+            background: #fff;
+            border: 1px solid #e8e2d6;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .account-card h3 {
+            margin-top: 0;
+        }
+        .account-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0ece3;
+            font-size: 0.92rem;
+        }
+        .account-row:last-child { border-bottom: none; }
+        .logout-btn {
+            background: none;
+            border: 1px solid #c0392b;
+            color: #c0392b;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.88rem;
+        }
+        .logout-btn:hover { background: #fdf3f2; }
+    </style>
+</head>
+
+<body>
+
+    <div class="contariar">
+
+        <header class="navbar">
+            <a href="index.html" class="logo" aria-label="AMIRVA home">
+                <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+                    <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none">
+                        <line x1="50" y1="62" x2="12" y2="52"/>
+                        <line x1="50" y1="62" x2="15" y2="38"/>
+                        <line x1="50" y1="62" x2="22" y2="26"/>
+                        <line x1="50" y1="62" x2="31" y2="17"/>
+                        <line x1="50" y1="62" x2="40" y2="12"/>
+                        <line x1="50" y1="62" x2="50" y2="10"/>
+                        <line x1="50" y1="62" x2="60" y2="12"/>
+                        <line x1="50" y1="62" x2="69" y2="17"/>
+                        <line x1="50" y1="62" x2="78" y2="26"/>
+                        <line x1="50" y1="62" x2="85" y2="38"/>
+                        <line x1="50" y1="62" x2="88" y2="52"/>
+                        <path d="M12 52 Q14 22 50 10 Q86 22 88 52"/>
+                    </g>
+                    <path d="M50 64 C40 72 42 84 50 92 C58 84 60 72 50 64 Z" fill="currentColor"/>
+                    <path d="M28 66 Q38 64 48 72 M72 66 Q62 64 52 72" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">AMIRVA</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="web.html">Shop</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="account.html" class="icon-btn active" aria-label="Account">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5 C5.5 15.5 18.5 15.5 19.5 20.5"/></svg>
+                </a>
+                <a href="cart.html" class="icon-btn cart-link" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5 H19 L18 20.5 H6 Z"/><path d="M9 8.5 V7 A3 3 0 0 1 15 7 V8.5"/></svg>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+            </div>
+        </header>
+
+        <section class="shop-head">
+            <div class="eyebrow">Your Space</div>
+            <h1 class="section-title" id="account-title">My Account</h1>
+        </section>
+
+        <div class="account-wrap">
+
+            <div class="account-card">
+                <h3>Profile</h3>
+                <div class="account-row"><span>Name</span><span id="profile-name"></span></div>
+                <div class="account-row"><span>Email</span><span id="profile-email"></span></div>
+            </div>
+
+            <div class="account-card" id="last-order-card" style="display:none;">
+                <h3>Your last order</h3>
+                <div id="last-order-details"></div>
+            </div>
+
+            <button type="button" class="logout-btn" id="logout-btn">Log out</button>
+        </div>
+
+        <footer class="site-footer" id="contact">
+            <div class="foot-bottom">
+                <div class="copy">© 2026 AMIRVA Jewelry. All rights reserved.</div>
+                <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="cart.js"></script>
+    <script src="nav.js"></script>
+    <script src="auth.js"></script>
+
+    <script>
+        (function () {
+            const user = getCurrentUser();
+
+            // Guard: not logged in → send to login, and remember to come back here
+            if (!user) {
+                sessionStorage.setItem("amirva_redirect_after_login", "account.html");
+                window.location.href = "login.html";
+                return;
+            }
+
+            document.getElementById("profile-name").textContent = user.name;
+            document.getElementById("profile-email").textContent = user.email;
+            document.getElementById("account-title").textContent = "Welcome, " + user.name;
+
+            // Show last order summary, if any
+            let order = null;
+            try {
+                order = JSON.parse(localStorage.getItem("amirva_last_order"));
+            } catch (e) { /* ignore */ }
+
+            if (order) {
+                const card = document.getElementById("last-order-card");
+                const details = document.getElementById("last-order-details");
+                card.style.display = "block";
+                details.innerHTML =
+                    "<div class='account-row'><span>Order</span><span>" + order.id + "</span></div>" +
+                    "<div class='account-row'><span>Total</span><span>" + order.total.toFixed(2) + " EGY</span></div>" +
+                    "<div class='account-row'><span>Payment</span><span>" +
+                    (order.paymentMethod === "cod" ? "Cash on delivery" : "Card ending in " + order.cardLast4) +
+                    "</span></div>";
+            }
+
+            document.getElementById("logout-btn").addEventListener("click", function () {
+                logout();
+                window.location.href = "index.html";
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
