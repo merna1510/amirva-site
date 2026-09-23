@@ -1,3 +1,5 @@
+// Each product now has an `images` array (used by the product page slider).
+// Replace the file names below with your real photos — first image is the main one.
 const products = [
   {
     id: 1,
@@ -10,6 +12,7 @@ const products = [
     discount: 25,
     salePrice: 2400,
     image: "grid1.jpeg",
+    images: ["grid1.jpeg", "campaign-solitaire.jpg", "lifestyle-rings.jpg"],
     sizes: [7, 8, 9, 10],
     description: "A classic 18K gold ring with a simple, elegant design for everyday wear."
   },
@@ -24,6 +27,7 @@ const products = [
     discount: 20,
     salePrice: 5200,
     image: "grid2.jpeg",
+    images: ["grid2.jpeg", "campaign-band.jpg", "campaign-solitaire.jpg"],
     sizes: [7, 8, 9, 10, 11],
     description: "A 21K gold ring set with a diamond, perfect for special occasions."
   },
@@ -38,6 +42,7 @@ const products = [
     discount: 25,
     salePrice: 3600,
     image: "grid3.jpeg",
+    images: ["grid3.jpeg", "campaign-peacock.jpg", "lifestyle-earrings.jpg"],
     sizes: [],
     description: "A 21K gold necklace with a classic design that shines on any occasion."
   },
@@ -52,6 +57,7 @@ const products = [
     discount: 25,
     salePrice: 2100,
     image: "grid4.jpeg",
+    images: ["grid4.jpeg", "grid5.jpeg", "lifestyle-rings.jpg"],
     sizes: ["S", "M", "L"],
     description: "An elegant silver bracelet, light and comfortable for everyday wear."
   },
@@ -66,6 +72,7 @@ const products = [
     discount: 20,
     salePrice: 2800,
     image: "grid5.jpeg",
+    images: ["grid5.jpeg", "lifestyle-earrings.jpg", "grid3.jpeg"],
     sizes: [],
     description: "18K gold earrings with a light, elegant design."
   },
@@ -80,6 +87,7 @@ const products = [
     discount: 25,
     salePrice: 3150,
     image: "grid1.jpeg",
+    images: ["grid1.jpeg", "campaign-band.jpg", "lifestyle-rings.jpg"],
     sizes: [7, 8, 9, 10],
     description: "A luxurious 21K gold Royal ring, great as a gift or for special occasions."
   },
@@ -94,6 +102,7 @@ const products = [
     discount: 25,
     salePrice: 4350,
     image: "grid2.jpeg",
+    images: ["grid2.jpeg", "campaign-solitaire.jpg", "campaign-band.jpg"],
     sizes: [8, 9, 10, 11],
     description: "A luxury 24K ring, a standout piece for pure gold lovers."
   },
@@ -108,6 +117,7 @@ const products = [
     discount: 25,
     salePrice: 3000,
     image: "grid3.jpeg",
+    images: ["grid3.jpeg", "campaign-peacock.jpg", "grid4.jpeg"],
     sizes: [],
     description: "A pearl necklace on a silver chain, a refined and understated look."
   },
@@ -122,6 +132,7 @@ const products = [
     discount: 20,
     salePrice: 1760,
     image: "grid4.jpeg",
+    images: ["grid4.jpeg", "campaign-peacock.jpg", "grid3.jpeg"],
     sizes: [],
     description: "A simple silver chain that suits every everyday look."
   },
@@ -136,6 +147,7 @@ const products = [
     discount: 25,
     salePrice: 3375,
     image: "grid5.jpeg",
+    images: ["grid5.jpeg", "grid4.jpeg", "lifestyle-rings.jpg"],
     sizes: ["S", "M", "L"],
     description: "An 18K gold bracelet with a modern design that suits every age."
   }

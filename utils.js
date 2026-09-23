@@ -35,10 +35,11 @@ function updateCartCount() {
 
 document.addEventListener("DOMContentLoaded", updateCartCount);
 
-// Shared product card (used by the home page and the shop page)
+// Shared product card (used by the home page, the shop page and "related pieces")
+// Clicking anywhere on the card (except its buttons) opens the product page.
 function productCardHTML(p) {
   return '' +
-    '<div class="image">' +
+    '<div class="image" data-product="' + p.id + '" tabindex="0" role="link" aria-label="View ' + p.name + '">' +
     '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">' +
     '<h2>' + p.name + '</h2>' +
     '<h3>price <del>' + formatPrice(p.price) + '</del></h3>' +
@@ -50,3 +51,15 @@ function productCardHTML(p) {
     '</div>' +
     '</div>';
 }
+
+// One global handler so every page that shows product cards gets the click-through
+function openProductFromCard(e) {
+  if (e.target.closest('button, a')) return;
+  var card = e.target.closest('.image[data-product]');
+  if (card) window.location.href = 'product.html?id=' + card.dataset.product;
+}
+
+document.addEventListener('click', openProductFromCard);
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && e.target.matches('.image[data-product]')) openProductFromCard(e);
+});
